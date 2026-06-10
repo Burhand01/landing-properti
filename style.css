@@ -168,7 +168,7 @@ body{
     width: 100%;
     max-width: 300px;     /* KUNCI PC: Membatasi agar foto tidak melar raksasa di PC */
     aspect-ratio: 4 / 5;  /* Mengunci rasio kotak tegak yang estetis */
-    object-fit: cover;    /* Memotong pas bagian tengah foto secara otomatis */
+    /*object-fit: cover;    /* Memotong pas bagian tengah foto secara otomatis */
 }
 
 /* Efek interaktif saat foto disentuh/di-hover */
