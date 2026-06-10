@@ -272,3 +272,92 @@ footer{
         max-width: 100%; /* Menyesuaikan penuh layar handphone saat dibuka di HP */
     }
 }
+/* ========================================================================= */
+/* STYLING POPUP LIGHTBOX */
+/* ========================================================================= */
+.lightbox {
+    display: none; /* Default: Sembunyi sebelum diklik */
+    position: fixed;
+    z-index: 10000; /* Berada di atas Navbar & Floating WA */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Latar belakang hitam transparan */
+    overflow: hidden;
+}
+
+/* Wadah Gambar Utama */
+.lightbox-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+}
+
+.lightbox-content img {
+    max-width: 90%;
+    max-height: 85vh;
+    object-fit: contain; /* Memastikan foto terlihat utuh tanpa terpotong saat diperbesar */
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Tombol Tutup (X) */
+.close-lightbox {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    user-select: none;
+    z-index: 10002;
+}
+
+.close-lightbox:hover {
+    color: #bbb;
+}
+
+/* Tombol Navigasi Kanan & Kiri (Slide) */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    padding: 16px;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    z-index: 10001;
+}
+
+.next {
+    right: 20px;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev {
+    left: 20px;
+}
+
+/* Efek Hover Tombol Panah */
+.prev:hover, .next:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Penyesuaian Tombol Slide pada Layar HP */
+@media (max-width: 480px) {
+    .prev, .next {
+        font-size: 24px;
+        padding: 12px;
+        background-color: rgba(0, 0, 0, 0.5); /* Beri background hitam tipis di HP agar jelas */
+    }
+}
