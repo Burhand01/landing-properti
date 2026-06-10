@@ -182,13 +182,23 @@ footer{
 
 /* VIDEO */
 
-.video-container{
-    max-width:900px;
-    margin:auto;
+.video-container {
+    width: 90%;            /* Memastikan container punya ruang di kanan-kiri pada layar HP */
+    max-width: 1200px;     /* Batas maksimal lebar area video di PC */
+    margin: 0 auto;        /* Membuat container utama berada di tengah */
+    
+    display: flex;
+    flex-wrap: wrap;       /* Membuat video otomatis turun ke bawah jika layar sempit */
+    justify-content: center; /* Menjaga semua video tetap fokus di center */
+    gap: 30px;             /* Jarak antar video (atas, bawah, kanan, kiri) */
 }
 
-.video-container video{
-    border-radius:12px;
+.video-container video {
+    width: 100%;           /* Membuat video responsif mengikuti lebar pembungkusnya */
+    max-width: 550px;      /* Ukuran maksimal video di PC agar tidak terlalu raksasa */
+    height: auto;          /* Menjaga tinggi video tetap proporsional (tidak gepeng) */
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Efek bayangan halus agar lebih estetik */
 }
 
 /* CENTER */
