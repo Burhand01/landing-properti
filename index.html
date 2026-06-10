@@ -152,6 +152,60 @@
     <footer>
         <p>© 2026 Panorama Tamansari - Setu-Bekasi. All Rights Reserved.</p>
     </footer>
+<div id="lightboxModal" class="lightbox">
+        <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+        
+        <div class="lightbox-content">
+            <img id="lightboxImg" src="" alt="Full Image">
+        </div>
 
+        <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+        <a class="next" onclick="changeSlide(1)">&#10095;</a>
+    </div>
+
+    <script>
+        let currentImgIndex = 0;
+        const images = document.querySelectorAll('.gallery img');
+        const modal = document.getElementById('lightboxModal');
+        const lightboxImg = document.getElementById('lightboxImg');
+
+        // Buka Lightbox saat foto diklik
+        images.forEach((img, index) => {
+            img.style.cursor = 'pointer'; // Mengubah kursor jadi bentuk jari tangan saat diarahkan ke foto
+            img.addEventListener('click', () => {
+                modal.style.display = 'block';
+                lightboxImg.src = img.src;
+                currentImgIndex = index;
+            });
+        });
+
+        // Tutup Lightbox
+        function closeLightbox() {
+            modal.style.display = 'none';
+        }
+
+        // Fungsi Geser Slide (Kanan / Kiri)
+        function changeSlide(direction) {
+            currentImgIndex += direction;
+            
+            // Jika geser melampaui foto terakhir, balik ke foto pertama
+            if (currentImgIndex >= images.length) {
+                currentImgIndex = 0;
+            }
+            // Jika geser mundur dari foto pertama, lompat ke foto terakhir
+            if (currentImgIndex < 0) {
+                currentImgIndex = images.length - 1;
+            }
+            
+            lightboxImg.src = images[currentImgIndex].src;
+        }
+
+        // Tutup otomatis jika user mengklik area hitam di luar gambar
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeLightbox();
+            }
+        });
+    </script>
 </body>
 </html>
