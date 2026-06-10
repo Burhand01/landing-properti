@@ -180,25 +180,45 @@ footer{
     border-radius:6px;
 }
 
-/* VIDEO */
-
+/* VIDEO CONTAINER GENERAL */
 .video-container {
-    width: 90%;            /* Memastikan container punya ruang di kanan-kiri pada layar HP */
-    max-width: 1200px;     /* Batas maksimal lebar area video di PC */
-    margin: 0 auto;        /* Membuat container utama berada di tengah */
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
     
     display: flex;
-    flex-wrap: wrap;       /* Membuat video otomatis turun ke bawah jika layar sempit */
-    justify-content: center; /* Menjaga semua video tetap fokus di center */
-    gap: 30px;             /* Jarak antar video (atas, bawah, kanan, kiri) */
+    flex-wrap: wrap;       /* Supaya video otomatis turun jika layar sempit */
+    justify-content: center; /* Tetap fokus di tengah */
+    align-items: center;   /* Sejajar secara vertikal jika tingginya beda */
+    gap: 30px;
 }
 
+/* KONTROL SEMUA VIDEO */
 .video-container video {
-    width: 100%;           /* Membuat video responsif mengikuti lebar pembungkusnya */
-    max-width: 550px;      /* Ukuran maksimal video di PC agar tidak terlalu raksasa */
-    height: auto;          /* Menjaga tinggi video tetap proporsional (tidak gepeng) */
+    width: 100%;
+    height: auto;
     border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Efek bayangan halus agar lebih estetik */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    background-color: #000; /* Layar hitam di belakang video saat loading */
+}
+
+/* SPESIFIK VIDEO LANDSCAPE (CHAT/TV BIASA) */
+.video-container video.landscape {
+    max-width: 550px; /* Lebar maksimal di PC */
+}
+
+/* SPESIFIK VIDEO PORTRAIT (MODEL HP/TIKTOK/REELS) */
+.video-container video.portrait {
+    max-width: 320px; /* Di PC tidak terlalu lebar, pas untuk ukuran HP */
+    aspect-ratio: 9 / 16; /* Memaksa rasio video tetap portrait yang pas */
+    object-fit: cover;    /* Memastikan video memenuhi area tanpa gepeng */
+}
+
+/* RESPONSIVE UNTUK HP KECIL */
+@media(max-width: 480px) {
+    .video-container video.portrait {
+        max-width: 100%; /* Di HP, video portrait akan melebar senyamannya layar HP */
+    }
 }
 
 /* CENTER */
